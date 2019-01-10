@@ -1,23 +1,18 @@
 import {NgModule} from '@angular/core';
 import {SharedModule} from '../shared/shared.module';
+import {LayoutComponent} from './containers/layout/layout.component';
+import {LoginComponent} from './containers/login/login.component';
 
 import {CoreRoutingModule} from './core-routing.module';
-import { LayoutComponent } from './containers/layout/layout.component';
-import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import {AuthGuard} from './guard/auth.guard';
 
 @NgModule({
-  declarations: [LayoutComponent],
+  declarations: [LayoutComponent, LoginComponent],
   imports: [
     SharedModule,
     CoreRoutingModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
-  ]
+  ],
+  providers: [AuthGuard]
 })
 
 export class CoreModule { }

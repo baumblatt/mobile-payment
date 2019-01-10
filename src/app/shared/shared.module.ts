@@ -1,5 +1,5 @@
-import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 import {MaterialModule} from './material/material.module';
 
 @NgModule({
@@ -7,6 +7,7 @@ import {MaterialModule} from './material/material.module';
     imports: [
         CommonModule,
         MaterialModule,
+
     ],
     exports: [
         CommonModule,
