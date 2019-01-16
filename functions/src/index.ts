@@ -1,8 +1,11 @@
+import * as admin from 'firebase-admin';
 import * as functions from 'firebase-functions';
+import Timestamp = admin.firestore.Timestamp;
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/docs/functions/typescript
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+admin.initializeApp(functions.config().firebase);
+const firestore = admin.firestore();
+
+export const welcome = functions.auth.user().onCreate((user, context) => {
+    const {uid, displayName, email, photoURL} = user;
+    return firestore.doc(`accounts/${uid}`).set({uid, displayName, email, photoURL, balance: 200, timestamp: Timestamp.now()});
+});
